@@ -27,7 +27,7 @@ export class TaksService {
         //console.log(this.taskModel.findById(id));
     }
 
-    async patchTask(id:string){
+    async patchTask(id:string){ // Usar ValidationPipe para id
         try {
             const state = (await this.taskModel.findById(id,{state:1})).state;
             const myPatch = await this.taskModel.findByIdAndUpdate(id,{state: (state ? false:true)},{new:true})
